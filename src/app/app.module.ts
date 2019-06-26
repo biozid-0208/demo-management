@@ -4,11 +4,14 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {EmployeeComponent} from './employee/employee.component';
 import {AppRoutingModule} from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import {FormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import {BasicAuthHtppInterceptService} from "./service/basic-auth-http-intercept.service";
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { HeaderComponent } from './header/header.component';
     EmployeeComponent,
     AddEmployeeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,11 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptService, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
