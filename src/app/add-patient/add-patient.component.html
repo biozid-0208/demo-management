@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <h2 class="text-center">Add Patient</h2>
-  <form>
+  <form  class="form-horizontal" (ngSubmit)="createPatient(PatientForm)" #PatientForm="ngForm">
     <div class="form-group">
       <label for="name">Prescription Date:</label>
       <input type="name" [(ngModel)]="patient.prescriptionDate" placeholder="Prescription Date" name="prescriptionDate" class="form-control" id="prescriptionDate">
@@ -36,7 +36,9 @@
       <input [(ngModel)]="patient.nextVisitDate" placeholder="NextVisitDate" name="nextVisitDate" class="form-control" id="nextVisitDate">
     </div>
 
-    <button class="btn btn-success" (click)="createPatient()">Create</button>
+<!--    <button class="btn btn-success" (click)="createPatient()">Create</button>-->
+    <button type="submit" id="sumbit-btn" class="btn btn-success pull-right" [disabled]="!PatientForm.valid"><i class="fa fa-save"></i> Save
+    </button>
   </form>
 </div>
 
