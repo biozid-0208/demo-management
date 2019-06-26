@@ -11,7 +11,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-import {BasicAuthHtppInterceptService} from "./service/basic-auth-http-intercept.service";
+import {BasicAuthHtppInterceptService} from './service/basic-auth-http-intercept.service';
+import { PatientComponent } from './patient/patient.component';
+import { AddPatientComponent } from './add-patient/add-patient.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {BasicAuthHtppInterceptService} from "./service/basic-auth-http-intercept
     FooterComponent,
     HeaderComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    PatientComponent,
+    AddPatientComponent
   ],
   imports: [
     BrowserModule,

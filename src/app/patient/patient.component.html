@@ -1,0 +1,30 @@
+<div class="col-md-6">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Prescription Date</th>
+      <th>name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Medicines</th>
+      <th>Diagnosis</th>
+      <th>Next Visit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let patient of patients">
+      <td>{{patient.prescriptionDate}}</td>
+      <td>{{patient.name}}</td>
+      <td>{{patient.age}}</td>
+      <td>{{patient.gender}}</td>
+      <td>{{patient.medicine}}</td>
+      <td>{{patient.diagnosis}}</td>
+      <td>{{patient.nextVisitDate}}</td>
+
+      <td><button class="btn btn-danger" (click)="deletePatient(patient)"> Delete Employee</button></td>
+      <td><button class="btn btn-danger" (click)="editPatient(patient)"> Edit Employee</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

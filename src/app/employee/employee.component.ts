@@ -22,7 +22,6 @@ export class EmployeeComponent implements OnInit {
   }
 
   handleSuccessfulResponse(response) {
-    console.log('Test -------------------------------');
     console.log(response);
     this.employees = response.entity;
   }
@@ -30,7 +29,7 @@ export class EmployeeComponent implements OnInit {
   deleteEmployee(employee: Employee): void {
     this.httpClientService.deleteEmployee(employee)
       .subscribe( data => {
-        this.employees = this.employees.filter(u => u.id !== employee.id);
+        this.employees = this.employees.filter(u => u['id'] !== employee.id);
       });
   }
 

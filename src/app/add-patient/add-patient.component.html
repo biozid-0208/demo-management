@@ -1,0 +1,42 @@
+<div class="col-md-12">
+  <h2 class="text-center">Add Patient</h2>
+  <form>
+    <div class="form-group">
+      <label for="name">Prescription Date:</label>
+      <input type="name" [(ngModel)]="patient.prescriptionDate" placeholder="Prescription Date" name="prescriptionDate" class="form-control" id="prescriptionDate">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" [(ngModel)]="patient.name" required placeholder="Name" name="name" class="form-control" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input [(ngModel)]="patient.age" required placeholder="Age" name="age" class="form-control" id="age">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Gender:</label>
+      <input [(ngModel)]="patient.gender" placeholder="Gender" name="gender" class="form-control" id="gender">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Diagnosis:</label>
+      <input [(ngModel)]="patient.diagnosis" placeholder="Diagnosis" name="diagnosis" class="form-control" id="diagnosis">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Medicines:</label>
+      <input [(ngModel)]="patient.medicine" placeholder="Medicine" name="medicine" class="form-control" id="medicine">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Next Visit:</label>
+      <input [(ngModel)]="patient.nextVisitDate" placeholder="NextVisitDate" name="nextVisitDate" class="form-control" id="nextVisitDate">
+    </div>
+
+    <button class="btn btn-success" (click)="createPatient()">Create</button>
+  </form>
+</div>
+

@@ -4,12 +4,12 @@
 
     <ul class="navbar-nav">
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/employees" class="nav-link">View Employees</a></li>
-      <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/addemployee" class="nav-link">Add New Employee</a></li>
+      <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/addEmployee" class="nav-link">Add New Employee</a></li>
+      <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/patients" class="nav-link">View Patients</a></li>
+      <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/addPatience" class="nav-link">Add New Patients</a></li>
       <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
     </ul>
-
-
   </nav>
 
 </header>
