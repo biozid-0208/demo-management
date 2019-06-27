@@ -17,11 +17,10 @@ import {AddPatientComponent} from './add-patient/add-patient.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {DatePipe} from '@angular/common';
 import {CalendarModule} from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
-    AddEmployeeComponent,
     FooterComponent,
     HeaderComponent,
     LoginComponent,

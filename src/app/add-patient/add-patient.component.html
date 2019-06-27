@@ -8,7 +8,7 @@
                   id="prescriptionDate"
                   #prescriptionDate="ngModel"
                   [(ngModel)]="patient.prescriptionDate"
-                  (ngModelChange)=checkFutureDate()
+                  (ngModelChange)=checkValidDate()
                   showButtonBar="true"
                   showIcon="true"
                   [required]="true"
