@@ -11,6 +11,7 @@ import {AddPatientComponent} from './add-patient/add-patient.component';
 const routes: Routes = [
   { path: 'employees', component: EmployeeComponent, canActivate: [AuthGaurdService]},
   { path: 'addEmployee', component: AddEmployeeComponent, canActivate: [AuthGaurdService]},
+  { path: 'editPatient/:id', component: AddPatientComponent, canActivate: [AuthGaurdService]},
   { path: 'patients', component: PatientComponent, canActivate: [AuthGaurdService]},
   { path: 'addPatience', component: AddPatientComponent, canActivate: [AuthGaurdService]},
   { path: 'login', component: LoginComponent },

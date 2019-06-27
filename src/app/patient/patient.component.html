@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-12">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -13,13 +13,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let patient of patients">
-      <td>{{patient.prescriptionDate}}</td>
+      <td>{{patient.prescriptionDate | date: 'dd-MM-yyyy'}}</td>
       <td>{{patient.name}}</td>
       <td>{{patient.age}}</td>
       <td>{{patient.gender}}</td>
       <td>{{patient.medicine}}</td>
       <td>{{patient.diagnosis}}</td>
-      <td>{{patient.nextVisitDate}}</td>
+      <td>{{patient.nextVisitDate | date: 'dd-MM-yyyy'}}</td>
 
       <td><button class="btn btn-danger" (click)="deletePatient(patient)"> Delete Employee</button></td>
       <td><button class="btn btn-danger" (click)="editPatient(patient)"> Edit Employee</button></td>

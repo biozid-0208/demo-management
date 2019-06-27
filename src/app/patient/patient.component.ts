@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClientService} from '../service/http-client.service';
 import {Patient} from '../Model/Patient';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class PatientComponent implements OnInit {
   patients: Patient[];
 
   constructor(
-    private httpClientService: HttpClientService
+    private httpClientService: HttpClientService, private router: Router,
   ) { }
 
   ngOnInit() {
@@ -35,7 +36,9 @@ export class PatientComponent implements OnInit {
   }
 
   editPatient(patient: Patient): void {
-
+    this.router.navigate(['/editPatient/' + patient.id]);
   }
+
+
 
 }
