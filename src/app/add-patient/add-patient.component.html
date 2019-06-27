@@ -3,12 +3,16 @@
   <form  class="form-horizontal" (ngSubmit)="createPatient(PatientForm)" #PatientForm="ngForm">
     <div class="form-group">
       <label for="name">Prescription Date:</label>
-      <input type="name" [(ngModel)]="patient.prescriptionDate" placeholder="Prescription Date" name="prescriptionDate" class="form-control" id="prescriptionDate">
+      <input type="date" [(ngModel)]="patient.prescriptionDate" placeholder="Prescription Date" name="prescriptionDate" class="form-control" id="prescriptionDate">
     </div>
 
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="name" [(ngModel)]="patient.name" required placeholder="Name" name="name" class="form-control" id="name">
+      <input type="name" [(ngModel)]="patient.name" required placeholder="Name" name="name" class="form-control" id="name"
+      #names="ngModel"
+      >
+      <span *ngIf="!names.valid && names.touched"
+            class="badge badge-danger">{{'Please Enter Name' }}</span>
     </div>
 
     <div class="form-group">
@@ -19,7 +23,7 @@
     <div class="form-group">
       <label for="age">Gender:</label>
       <select  class='form-control' [(ngModel)]="patient.gender" name="gender" #gender
-                [value]='Male'>
+               (change)="ChangingValue($event.target.value)" [value]='Male'>
         <option value='Male'>Male</option>
         <option value='Female'>Female</option>
         <option value='Other'>Other</option>

@@ -15,6 +15,7 @@ import {BasicAuthHtppInterceptService} from './service/basic-auth-http-intercept
 import {PatientComponent} from './patient/patient.component';
 import {AddPatientComponent} from './add-patient/add-patient.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptService, multi: true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

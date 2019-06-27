@@ -3,6 +3,7 @@ import {HttpClientService} from '../service/http-client.service';
 import {Patient} from '../Model/Patient';
 import {NgForm} from '@angular/forms';
 import {NgOption} from '@ng-select/ng-select';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-add-patient',
@@ -18,7 +19,8 @@ export class AddPatientComponent implements OnInit {
     {id: 'Other', name: 'Other'}
   ];
   constructor(
-    private httpClientService: HttpClientService
+    private httpClientService: HttpClientService,
+    private datepipe: DatePipe,
   ) { }
 
   ngOnInit() {
@@ -26,12 +28,18 @@ export class AddPatientComponent implements OnInit {
 
 
   createPatient(ngForm: NgForm): void {
+    console.log(this.datepipe.transform(this.patient.prescriptionDate, 'MMMM dd, yyyy'));
     console.log(this.patient);
     this.httpClientService.createPatient(this.patient)
       .subscribe( data => {
         alert('Employee created successfully.');
       });
 
+  }
+
+  ChangingValue(value) {
+    console.log(value);
+    this.patient.gender = value;
   }
 
 }
