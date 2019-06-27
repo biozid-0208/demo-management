@@ -1,7 +1,8 @@
 <div class="col-md-12">
   <h2 class="text-center">Add Patient Details</h2>
   <form  class="form-horizontal" (ngSubmit)="createPatient(PatientForm)" #PatientForm="ngForm">
-    <div class="form-group">
+    <div class="row">
+    <div class="col-md-6" >
       <label for="name">Prescription Date:</label> <br>
       <p-calendar required="true"
                   name="prescriptionDate"
@@ -17,6 +18,18 @@
       <span *ngIf="!prescriptionDate.valid " class="badge badge-danger">{{'Please Enter Valid Date' }}</span>
      </div>
 
+    <div class="col-md-6">
+      <label for="age">Next Visit:</label> <br>
+      <p-calendar name="nextVisitDate"
+                  id="nextVisitDate"
+                  #nextVisitDate="ngModel"
+                  [(ngModel)]="patient.nextVisitDate"
+                  showButtonBar="true"
+                  showIcon="true"
+                  dateFormat="dd-mm-yy">
+      </p-calendar>
+    </div>
+    </div>
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="name" [(ngModel)]="patient.name" required placeholder="Name" name="name" class="form-control" id="name"
@@ -27,7 +40,7 @@
     <div class="form-group">
       <label for="age">Age:</label>
       <input [(ngModel)]="patient.age" #patientAge="ngModel"
-             required placeholder="Age"
+             required placeholder="Age" type="number" min="1"
              name="age" class="form-control" id="age">
       <span *ngIf="!patientAge.valid && patientAge.touched" class="badge badge-danger">{{'Please Enter Age' }}</span>
     </div>
@@ -45,26 +58,14 @@
 
     <div class="form-group">
       <label for="age">Diagnosis:</label>
-      <input [(ngModel)]="patient.diagnosis" placeholder="Diagnosis" name="diagnosis" class="form-control" id="diagnosis">
+      <textarea [(ngModel)]="patient.diagnosis" placeholder="Diagnosis" name="diagnosis" class="form-control" id="diagnosis"></textarea>
     </div>
 
     <div class="form-group">
       <label for="age">Medicines:</label>
-      <input [(ngModel)]="patient.medicine" placeholder="Medicine" name="medicine" class="form-control" id="medicine">
+      <textarea [(ngModel)]="patient.medicine" placeholder="Medicine" name="medicine" class="form-control" id="medicine"></textarea>
     </div>
 
-    <div class="form-group">
-      <label for="age">Next Visit:</label>
-      <p-calendar required="true"
-                  name="nextVisitDate"
-                  id="nextVisitDate"
-                  #nextVisitDate="ngModel"
-                  [(ngModel)]="patient.nextVisitDate"
-                  showButtonBar="true"
-                  showIcon="true"
-                  dateFormat="dd-mm-yy">
-      </p-calendar>
-    </div>
     <button type="submit" id="sumbit-btn" class="btn btn-success pull-right" [disabled]="!PatientForm.valid"><i class="fa fa-save"></i> Save
     </button>
   </form>
