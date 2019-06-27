@@ -1,17 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {HttpClientService} from '../service/http-client.service';
 import {Patient} from '../Model/Patient';
-import {NgForm} from '@angular/forms';
+import {NgForm, NgModel} from '@angular/forms';
 import {NgOption} from '@ng-select/ng-select';
 import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
-  styleUrls: ['./add-patient.component.css']
+  styleUrls: ['./add-patient.component.css'
+
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddPatientComponent implements OnInit {
-
+  @ViewChild('prescriptionDate') prescriptionDate: NgModel;
   patient: Patient = new Patient('', '', '', '', '', '', null, null);
   genders: NgOption[] = [
     {id: 'Male', name: 'Male'},
@@ -24,6 +27,7 @@ export class AddPatientComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+ this.patient.prescriptionDate = new Date();
   }
 
 
@@ -41,5 +45,15 @@ export class AddPatientComponent implements OnInit {
     console.log(value);
     this.patient.gender = value;
   }
-
+  checkFutureDate() {
+    console.log('checkFutureDate');
+    console.log( this.patient.prescriptionDate );
+    this.prescriptionDate.control.setErrors(null);
+    if  (this.patient.prescriptionDate === null ) {
+      this.prescriptionDate.control.setErrors({'invalid Date': true});
+    }
+  }
+  assignVal() {
+    this.patient.prescriptionDate = new Date();
+  }
 }

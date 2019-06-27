@@ -1,33 +1,46 @@
 <div class="col-md-12">
-  <h2 class="text-center">Add Patient</h2>
+  <h2 class="text-center">Add Patient Details</h2>
   <form  class="form-horizontal" (ngSubmit)="createPatient(PatientForm)" #PatientForm="ngForm">
     <div class="form-group">
-      <label for="name">Prescription Date:</label>
-      <input type="date" [(ngModel)]="patient.prescriptionDate" placeholder="Prescription Date" name="prescriptionDate" class="form-control" id="prescriptionDate">
-    </div>
+      <label for="name">Prescription Date:</label> <br>
+      <p-calendar required="true"
+                  name="prescriptionDate"
+                  id="prescriptionDate"
+                  #prescriptionDate="ngModel"
+                  [(ngModel)]="patient.prescriptionDate"
+                  (ngModelChange)=checkFutureDate()
+                  showButtonBar="true"
+                  showIcon="true"
+                  [required]="true"
+                  dateFormat="dd-mm-yy">
+      </p-calendar>
+      <span *ngIf="!prescriptionDate.valid " class="badge badge-danger">{{'Please Enter Valid Date' }}</span>
+     </div>
 
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="name" [(ngModel)]="patient.name" required placeholder="Name" name="name" class="form-control" id="name"
-      #names="ngModel"
-      >
-      <span *ngIf="!names.valid && names.touched"
-            class="badge badge-danger">{{'Please Enter Name' }}</span>
+      #names="ngModel">
+      <span *ngIf="!names.valid && names.touched" class="badge badge-danger">{{'Please Enter Name' }}</span>
     </div>
 
     <div class="form-group">
       <label for="age">Age:</label>
-      <input [(ngModel)]="patient.age" required placeholder="Age" name="age" class="form-control" id="age">
+      <input [(ngModel)]="patient.age" #patientAge="ngModel"
+             required placeholder="Age"
+             name="age" class="form-control" id="age">
+      <span *ngIf="!patientAge.valid && patientAge.touched" class="badge badge-danger">{{'Please Enter Age' }}</span>
     </div>
 
     <div class="form-group">
       <label for="age">Gender:</label>
-      <select  class='form-control' [(ngModel)]="patient.gender" name="gender" #gender
-               (change)="ChangingValue($event.target.value)" [value]='Male'>
+      <select  class='form-control' [(ngModel)]="patient.gender" name="gender" #gender="ngModel" required
+               (change)="ChangingValue($event.target.value)">
         <option value='Male'>Male</option>
         <option value='Female'>Female</option>
         <option value='Other'>Other</option>
       </select>
+      <span *ngIf="!gender.valid && gender.touched" class="badge badge-danger">{{'Please Enter Gender' }}</span>
     </div>
 
     <div class="form-group">
@@ -42,10 +55,16 @@
 
     <div class="form-group">
       <label for="age">Next Visit:</label>
-      <input [(ngModel)]="patient.nextVisitDate" placeholder="NextVisitDate" name="nextVisitDate" class="form-control" id="nextVisitDate">
+      <p-calendar required="true"
+                  name="nextVisitDate"
+                  id="nextVisitDate"
+                  #nextVisitDate="ngModel"
+                  [(ngModel)]="patient.nextVisitDate"
+                  showButtonBar="true"
+                  showIcon="true"
+                  dateFormat="dd-mm-yy">
+      </p-calendar>
     </div>
-
-<!--    <button class="btn btn-success" (click)="createPatient()">Create</button>-->
     <button type="submit" id="sumbit-btn" class="btn btn-success pull-right" [disabled]="!PatientForm.valid"><i class="fa fa-save"></i> Save
     </button>
   </form>
