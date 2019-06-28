@@ -5,6 +5,7 @@
     <ul class="navbar-nav">
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/patients" class="nav-link">View Patients</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/addPatience" class="nav-link">Add New Patients</a></li>
+      <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/visitReport" class="nav-link">Visit Report</a></li>
       <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
     </ul>

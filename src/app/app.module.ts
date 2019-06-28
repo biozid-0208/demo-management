@@ -16,6 +16,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {DatePipe} from '@angular/common';
 import {CalendarModule} from 'primeng/primeng';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     LogoutComponent,
     PatientComponent,
-    AddPatientComponent
+    AddPatientComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

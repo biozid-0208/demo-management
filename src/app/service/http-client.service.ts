@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Patient} from '../Model/Patient';
 import {Observable} from 'rxjs/Rx';
+import {Report} from '../Model/Report';
 
 
 @Injectable({
@@ -15,12 +16,10 @@ export class HttpClientService {
   }
 
   getPatients() {
-    console.log('test call');
     return this.httpClient.get<Patient[]>('http://localhost:8080/patients');
   }
 
   getPatient(id): Observable<any> {
-    console.log('test call');
     return this.httpClient.get<Patient>('http://localhost:8080/patients/' + id);
   }
 
@@ -31,6 +30,10 @@ export class HttpClientService {
 
   public createPatient(patient): Observable<any> {
     return this.httpClient.post<Patient>('http://localhost:8080/patients', patient);
+  }
+
+  getReport() {
+    return this.httpClient.get<Report[]>('http://localhost:8080/patients/report');
   }
 
 }
