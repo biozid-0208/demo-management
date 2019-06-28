@@ -1,38 +1,81 @@
-<div class="col-md-12">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Prescription Date</th>
-      <th>name</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Medicines</th>
-      <th>Diagnosis</th>
-      <th>Next Visit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let patient of patients">
-      <td>{{patient.prescriptionDate | date: 'dd-MM-yyyy'}}</td>
-      <td>{{patient.name}}</td>
-      <td>{{patient.age}}</td>
-      <td>{{patient.gender}}</td>
-      <td>{{patient.medicine}}</td>
-      <td>{{patient.diagnosis}}</td>
-      <td>{{patient.nextVisitDate | date: 'dd-MM-yyyy'}}</td>
+<div class="card">
+  <div class="ui-card-body">
+    <div class="row">
+      <div class="col-md-1">
+        <label for="startDate">Start Date:</label>
+      </div>
+      <div class="col-md-4">
+        <p-calendar name="startDate"
+                    id="startDate"
+                    #start_date="ngModel"
+                    [(ngModel)]="startDate"
+                    showButtonBar="true"
+                    showIcon="true"
+                    dateFormat="dd-mm-yy">
+        </p-calendar>
+      </div>
 
-      <td><button class="btn btn-danger" (click)="openDeleteModal(deleteConfirmationModal);
-        updateDeletedPatient(patient)"> Delete Employee</button></td>
-      <td><button class="btn btn-warning" (click)="editPatient(patient)"> Edit Employee</button></td>
-    </tr>
-    </tbody>
-  </table>
+      <div class="col-md-1">
+        <label for="EndDate">End Date:</label>
+      </div>
+      <div class="col-md-4">
+        <p-calendar name="endDate"
+                    id="endDate"
+                    #end_date="ngModel"
+                    [(ngModel)]="endDate"
+                    showButtonBar="true"
+                    showIcon="true"
+                    dateFormat="dd-mm-yy">
+        </p-calendar>
+      </div>
+      <div class="col-md-1 right">
+        <button class="btn btn-warning" (click)="filterData()"> Filter</button>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Prescription Date</th>
+          <th>name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Medicines</th>
+          <th>Diagnosis</th>
+          <th>Next Visit</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{patient.prescriptionDate | date: 'dd-MM-yyyy'}}</td>
+          <td>{{patient.name}}</td>
+          <td>{{patient.age}}</td>
+          <td>{{patient.gender}}</td>
+          <td>{{patient.medicine}}</td>
+          <td>{{patient.diagnosis}}</td>
+          <td>{{patient.nextVisitDate | date: 'dd-MM-yyyy'}}</td>
+
+          <td>
+            <button class="btn btn-danger" (click)="openDeleteModal(deleteConfirmationModal);
+        updateDeletedPatient(patient)"> Delete Employee
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-warning" (click)="editPatient(patient)"> Edit Employee</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <div class="card-body">
   <ng-template #deleteConfirmationModal let-c="close" let-d="dismiss">
     <div class="modal-header">
-      <h4 class="modal-title">'Delete confirmation'  </h4>
+      <h4 class="modal-title">'Delete confirmation' </h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>

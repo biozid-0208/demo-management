@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Patient} from '../Model/Patient';
 import {Observable} from 'rxjs/Rx';
 import {Report} from '../Model/Report';
@@ -34,6 +34,13 @@ export class HttpClientService {
 
   getReport() {
     return this.httpClient.get<Report[]>('http://localhost:8080/patients/report');
+  }
+
+  filterData( startDate, endDate) {
+    const params = new HttpParams()
+      .set('startDate', startDate)
+      .set('endDate', endDate);
+    return this.httpClient.get<Patient[]>('http://localhost:8080/patients/search', {params} );
   }
 
 }
