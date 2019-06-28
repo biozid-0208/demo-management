@@ -17,8 +17,6 @@ export class PatientComponent implements OnInit {
   deleted_patient: Patient;
   startDate: Date;
   endDate: Date;
-  private end_date: string;
-  private start_date: string;
 
   constructor(
     private httpClientService: HttpClientService, private router: Router,
@@ -27,6 +25,12 @@ export class PatientComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchAll();
+  }
+
+  fetchAll() {
+    this.startDate = null;
+    this.endDate = null;
     this.httpClientService.getPatients().subscribe(
       response => this.handleSuccessfulResponse(response),
     );
@@ -62,18 +66,19 @@ export class PatientComponent implements OnInit {
 
   filterData() {
     console.log('this is test ');
+    let start_date;
+    let end_date;
     if (this.startDate === null || this.startDate === undefined) {
-      this.start_date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+      start_date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     } else {
-      this.start_date = this.datepipe.transform(this.startDate, 'yyyy-MM-dd');
+      start_date = this.datepipe.transform(this.startDate, 'yyyy-MM-dd');
     }
     if (this.endDate === null || this.endDate === undefined) {
-      this.end_date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+      end_date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     } else {
-      this.end_date = this.datepipe.transform(this.endDate, 'yyyy-MM-dd');
+      end_date = this.datepipe.transform(this.endDate, 'yyyy-MM-dd');
     }
-
-    this.httpClientService.filterData(this.start_date, this.end_date).subscribe(
+    this.httpClientService.filteringData(start_date, end_date).subscribe(
       response => this.handleSuccessfulResponse(response),
     );
   }

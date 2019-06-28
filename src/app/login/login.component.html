@@ -1,9 +1,20 @@
-<div class="container">
-  <div>
-    User Name : <input type="text" name="username" [(ngModel)]="username">
-    Password : <input type="password" name="password" [(ngModel)]="password">
+<!--<div class="container">-->
+<!--  <div>-->
+<!--    User Name : <input type="text" name="username" [(ngModel)]="username">-->
+<!--    Password : <input type="password" name="password" [(ngModel)]="password">-->
+<!--  </div>-->
+<!--  <button (click)=checkLogin() class="btn btn-success">-->
+<!--    Login-->
+<!--  </button>-->
+<!--</div>-->
+
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div>
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="username" [(ngModel)]="username">
+      <input id="password" class="fadeIn third" type="password" name="password" placeholder="password" [(ngModel)]="password" >
+      <input type="submit" (click)=checkLogin() class="fadeIn fourth" value="Log In">
+    </div>
   </div>
-  <button (click)=checkLogin() class="btn btn-success">
-    Login
-  </button>
 </div>

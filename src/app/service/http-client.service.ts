@@ -36,7 +36,7 @@ export class HttpClientService {
     return this.httpClient.get<Report[]>('http://localhost:8080/patients/report');
   }
 
-  filterData( startDate, endDate) {
+  filteringData( startDate, endDate) {
     const params = new HttpParams()
       .set('startDate', startDate)
       .set('endDate', endDate);
