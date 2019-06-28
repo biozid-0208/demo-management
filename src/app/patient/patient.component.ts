@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClientService} from '../service/http-client.service';
 import {Patient} from '../Model/Patient';
 import {Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,9 +13,9 @@ import {Router} from '@angular/router';
 export class PatientComponent implements OnInit {
 
   patients: Patient[];
-
+  deleted_patient: Patient;
   constructor(
-    private httpClientService: HttpClientService, private router: Router,
+    private httpClientService: HttpClientService, private router: Router, private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -39,6 +40,15 @@ export class PatientComponent implements OnInit {
     this.router.navigate(['/editPatient/' + patient.id]);
   }
 
-
+  updateDeletedPatient(patient: Patient) {
+    this.deleted_patient = patient;
+  }
+  openDeleteModal(content) {
+    this.modalService.open(content).result.then((result) => {
+      console.log('in result ->' + result);
+      this.deletePatient(this.deleted_patient);
+    }, (reason) => {
+    });
+  }
 
 }

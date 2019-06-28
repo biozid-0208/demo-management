@@ -21,10 +21,28 @@
       <td>{{patient.diagnosis}}</td>
       <td>{{patient.nextVisitDate | date: 'dd-MM-yyyy'}}</td>
 
-      <td><button class="btn btn-danger" (click)="deletePatient(patient)"> Delete Employee</button></td>
+      <td><button class="btn btn-danger" (click)="openDeleteModal(deleteConfirmationModal);
+        updateDeletedPatient(patient)"> Delete Employee</button></td>
       <td><button class="btn btn-danger" (click)="editPatient(patient)"> Edit Employee</button></td>
     </tr>
     </tbody>
   </table>
+</div>
 
+<div class="card-body">
+  <ng-template #deleteConfirmationModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">'Delete confirmation'  </h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p> 'Are you sure?' </p>
+    </div>
+    <div class="modal-footer">
+      <button id="delete-btn" type="button" class="btn btn-danger" (click)="c('Close click')">'Delete'</button>
+      <button id="close-btn" type="button" class="btn btn-secondary" (click)="d('Cross click')">'Close'</button>
+    </div>
+  </ng-template>
 </div>
