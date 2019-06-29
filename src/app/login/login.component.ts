@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.invalidLogin = true;
-
+          alert('Invalid Credential');
         }
       )
     );

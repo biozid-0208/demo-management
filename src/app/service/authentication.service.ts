@@ -14,8 +14,6 @@ export class AuthenticationService {
   }
 
   authenticate(username, password) {
-    console.log(username);
-    console.log(password);
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
     return this.httpClient.get<User>('http://localhost:8080/user/validateLogin', { headers }).pipe(
       map(
